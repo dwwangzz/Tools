@@ -1,0 +1,28 @@
+与spring集成的时候使用如下配置
+
+<bean id="memcachedPool" class="com.gcj.utils.SockIOPoolUtil"
+	 init-method="initialize" destroy-method="shutDown">  
+    <property name="servers">  
+        <list>  
+            <value>${memcached.server}</value>  
+        </list>  
+    </property>  
+    <property name="initConn">  
+        <value>${memcached.initConn}</value>  
+    </property>  
+    <property name="minConn">  
+        <value>${memcached.minConn}</value>  
+    </property>  
+    <property name="maxConn">  
+        <value>${memcached.maxConn}</value>  
+    </property>  
+    <property name="maintSleep">  
+        <value>${memcached.maintSleep}</value>  
+    </property>  
+    <property name="nagle">  
+        <value>${memcached.nagle}</value>  
+    </property>  
+    <property name="socketTO">  
+        <value>${memcached.socketTO}</value>  
+    </property>  
+</bean>
