@@ -338,7 +338,7 @@ public abstract class DateUtil {
 	 * @return int
 	 * @date 2015年11月26日 上午10:07:58
 	 */
-	public static int getField(String field){
+	public static final int getField(String field){
 		if (field == null) {
 			throw new IllegalArgumentException("The field must not be null");
 		}
@@ -366,7 +366,7 @@ public abstract class DateUtil {
 	 * @return int
 	 * @date 2015年11月26日 上午10:10:46
 	 */
-	public static int getField(Date date, String field){
+	public static final int getField(Date date, String field){
 		if (date == null || field == null) {
 			throw new IllegalArgumentException("The date and field must not be null");
 		}
@@ -393,7 +393,7 @@ public abstract class DateUtil {
 	 * @return int
 	 * @date 2015年11月26日 上午10:11:56
 	 */
-	public static int getMaxDay() {
+	public static final int getMaxDay() {
 		int maxDay = 0;
 		Calendar calendar = Calendar.getInstance();
 		maxDay = calendar.getActualMaximum(Calendar.DATE);
@@ -407,7 +407,7 @@ public abstract class DateUtil {
 	 * @return int
 	 * @date 2015年11月26日 上午10:12:17
 	 */
-	public static int getMaxDay(Date date) {
+	public static final int getMaxDay(Date date) {
 		if (date == null) {
 			throw new IllegalArgumentException("The date must not be null");
 		}
@@ -426,7 +426,7 @@ public abstract class DateUtil {
 	 * @return int
 	 * @date 2015年11月26日 上午10:12:52
 	 */
-	public static int getMaxDay(int year,int month) {
+	public static final int getMaxDay(int year,int month) {
 		if (year <= 0 || month <= 0) {
 			throw new IllegalArgumentException("The year and month must be greater than zero");
 		}
@@ -444,7 +444,7 @@ public abstract class DateUtil {
 	 * @return String
 	 * @date 2015年11月26日 上午10:13:22
 	 */
-	public static String getDuration(long millisecond){
+	public static final String getDuration(long millisecond){
 		if (millisecond <= 0) {
 			throw new IllegalArgumentException("The millisecond must be greater than zero");
 		}
