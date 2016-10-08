@@ -136,6 +136,27 @@ public class Mapz<K, V> extends HashMap<K, V> implements Serializable {
         return new Mapz<K, V>();
     }
 
+    /**
+     * 获得一个Mapz对象
+     * wangzz
+     * @return
+     */
+    public static Mapz<String, Object> get() {
+        return Mapz.<String, Object>build();
+    }
+
+    /**
+     * 获得一个getResultMap对象
+     * wangzz
+     * @return
+     */
+    public static Mapz<String, Object> getResultMap(Object status, String msg) {
+        Mapz<String, Object> resultMap = new Mapz<String, Object>();
+        resultMap.put("status", status);
+        resultMap.put("msg", msg);
+        return resultMap;
+    }
+
     public static void main(String[] args) {
         /*Mapz<Object, Object> build = Mapz.build();
         build.set("ddd", "ddd")
