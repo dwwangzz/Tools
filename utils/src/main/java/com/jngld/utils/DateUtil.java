@@ -85,6 +85,23 @@ public abstract class DateUtil {
     public static final String DAY = "DAY";
     public static final String QUARTER = "QUARTER";
 
+    //日期
+    public static final int YEAR_Z = Calendar.YEAR; //年
+    public static final int MONTH_Z = Calendar.MONTH; //月
+    public static final int DATE_Z = Calendar.DATE; //日
+    //时间
+    public static final int HOUR_Z = Calendar.HOUR_OF_DAY; //24小时制，小时
+    public static final int MINUTE_Z = Calendar.MINUTE; //分钟
+    public static final int SECOND_Z = Calendar.SECOND; //秒
+    //周
+    public static final int WEEK_OF_YEAR_Z = Calendar.WEEK_OF_YEAR; //当前日期是当前年的第几周
+    public static final int WEEK_OF_MONTH_Z = Calendar.WEEK_OF_MONTH; //当前日期是这个月的第几周
+    //天
+    public static final int DAY_OF_YEAR_Z = Calendar.DAY_OF_YEAR; //获得这个年的第几天 从1开始
+    public static final int DAY_OF_MONTH_Z = Calendar.DAY_OF_MONTH; //获得这个月的第几天 从1开始
+    public static final int DAY_OF_WEEK_Z = Calendar.DAY_OF_WEEK; //获得这个星期的第几天
+
+
     /**
      * 获取日期格式化工具类
      * @param format 日期格式
@@ -520,15 +537,29 @@ public abstract class DateUtil {
         return calendar1.compareTo(calendar2);
     }
 
+    /**
+     * 获取Calendar对象
+     * @param date
+     * @return
+     */
+    public static final Calendar getCalendar(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    }
+
+    /**
+     * 获取Calendar对象
+     * @return
+     */
+    public static final Calendar getCalendar() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar;
+    }
+
     public static void main(String[] args) throws ParseException {
-        //System.out.println(strToSqlDate("2015-01-01",dtSimple));
-        //System.out.println(strToUtilDate("2015-01-01",dtSimple));
-        Date date1 = strToUtilDate("2015-01-01", dtSimple);
-        Date date2 = strToUtilDate("2015-02-02", dtSimple);
-        Date date3 = strToUtilDate("2015-01-01", dtSimple);
-        System.out.println(compareTo(date1, date2));
-        System.out.println(compareTo(date2, date1));
-        System.out.println(compareTo(date1, date3));
+
+        Calendar calendar = getCalendar();
 
     }
 }
