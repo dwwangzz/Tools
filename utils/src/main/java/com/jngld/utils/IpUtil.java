@@ -251,7 +251,9 @@ public class IpUtil {
         if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
             return ip;
         }
-        return request.getRemoteAddr();
+        ip = request.getRemoteAddr();
+        ip = ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
+        return ip;
     }
 
     /**
