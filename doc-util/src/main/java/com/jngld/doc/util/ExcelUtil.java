@@ -21,7 +21,6 @@ import java.util.List;
 
 /**
  * excel读写工具类
- *
  * @author (作者) xus-a
  * @version (版本) V1.0
  * @date (开发日期) 2015年11月27日 下午4:30:48
@@ -37,9 +36,8 @@ public class ExcelUtil {
 
     /**
      * 导出03版(后缀xls)的excel(无分页，数据只在一个sheet中)
-     *
      * @param out
-     * @param dataList   数据集合，最外层是行，List<Object>行内列的数据集合
+     * @param dataList 数据集合，最外层是行，List<Object>行内列的数据集合
      * @param titleArray 标题集合数组
      * @throws IOException
      * @author xus-a
@@ -52,9 +50,8 @@ public class ExcelUtil {
 
     /**
      * 导出03版(后缀xls)的excel(分页，数据会在多个sheet中，页数大小自己指定)
-     *
      * @param out
-     * @param dataList   数据集合，最外层是行，List<Object>行内列的数据集合
+     * @param dataList 数据集合，最外层是行，List<Object>行内列的数据集合
      * @param titleArray 标题集合数组
      * @param pageSize
      * @throws IOException
@@ -69,9 +66,8 @@ public class ExcelUtil {
 
     /**
      * 导出07版(后缀xls)的excel(无分页，数据只在一个sheet中)
-     *
      * @param out
-     * @param dataList   数据集合，最外层是行，List<Object>行内列的数据集合
+     * @param dataList 数据集合，最外层是行，List<Object>行内列的数据集合
      * @param titleArray 标题集合数组
      * @throws IOException
      * @author xus-a
@@ -84,9 +80,8 @@ public class ExcelUtil {
 
     /**
      * 导出07版(后缀xls)的excel(分页，数据会在多个sheet中，页数大小自己指定)
-     *
      * @param out
-     * @param dataList   数据集合，最外层是行，List<Object>行内列的数据集合
+     * @param dataList 数据集合，最外层是行，List<Object>行内列的数据集合
      * @param titleArray 标题集合数组
      * @param pageSize
      * @throws IOException
@@ -101,7 +96,6 @@ public class ExcelUtil {
 
     /**
      * 导出excel(无分页)
-     *
      * @param out
      * @param dataList
      * @param titleArray
@@ -130,9 +124,8 @@ public class ExcelUtil {
 
     /**
      * 导出excel(分页)
-     *
      * @param out
-     * @param dataList   需要传入的数据源,最外面一层List代表的是你的行,里面的List代表行里的数据
+     * @param dataList 需要传入的数据源,最外面一层List代表的是你的行,里面的List代表行里的数据
      * @param titleArray
      * @param pageSize
      * @throws IOException
@@ -174,9 +167,8 @@ public class ExcelUtil {
 
     /**
      * 创建sheet的方法
-     *
-     * @param workbook   poi
-     * @param dataList   数据集合
+     * @param workbook poi
+     * @param dataList 数据集合
      * @param titleArray 表头数组
      * @param sheetIndex sheet的序号
      * @throws IOException
@@ -211,7 +203,6 @@ public class ExcelUtil {
 
     /**
      * 计算分页
-     *
      * @param total
      * @param pageSize
      * @return
@@ -453,6 +444,54 @@ public class ExcelUtil {
                 return cell.getErrorCellValue() + "";
         }
         return "";
+    }
+
+    /**
+     * 判断行传入行是否为空
+     * @param row
+     * @return
+     */
+    public static boolean rowIsEmpty(Row row) {
+        if (row == null) {
+            return true;
+        }
+        short len = row.getLastCellNum();
+        for (int i = 0; i < len; i++) {
+            if (cellIsNotEmpty(row.getCell(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean rowIsNotEmpty(Row row) {
+        return !rowIsEmpty(row);
+    }
+
+    /**
+     * 判断传入单元格是否为空
+     * @param cell
+     * @return
+     */
+    public static boolean cellIsEmpty(Cell cell) {
+        if (cell == null) {
+            return true;
+        }
+        try {
+            String cellStr = cell.toString();
+            if (cellStr.trim().length() == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    public static boolean cellIsNotEmpty(Cell cell) {
+        return !cellIsEmpty(cell);
     }
 
 }
