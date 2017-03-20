@@ -35,14 +35,20 @@ public class Mapz<K, V> extends HashMap<K, V> implements Serializable {
      * mediumint
      */
     public Integer getInt(String attr) {
-        return (Integer) this.get(attr);
+        if (this.get(attr) == null) {
+            return null;
+        }
+        return Integer.parseInt(this.get(attr).toString());
     }
 
     /**
      * Get attribute of mysql type: bigint, unsign int
      */
     public Long getLong(String attr) {
-        return (Long) this.get(attr);
+        if (this.get(attr) == null) {
+            return null;
+        }
+        return Long.parseLong(this.get(attr).toString());
     }
 
     /**
