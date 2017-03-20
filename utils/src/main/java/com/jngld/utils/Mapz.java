@@ -3,6 +3,7 @@ package com.jngld.utils;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -143,6 +144,17 @@ public class Mapz<K, V> extends HashMap<K, V> implements Serializable {
      */
     public static Mapz<String, Object> get() {
         return Mapz.<String, Object>build();
+    }
+
+    /**
+     * 获得一个Mapz对象
+     * wangzz
+     * @return
+     */
+    public static <K, V> Mapz<K, V> get(Map<?, ?> map) {
+        Mapz mapz = Mapz.<K, V>build();
+        mapz.putAll(map);
+        return mapz;
     }
 
     /**
